@@ -1,0 +1,16 @@
+<div class="login-container">
+    <h2>Login</h2>
+    <form>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Email" type="email">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Password" type="password">
+      </mat-form-field>
+      <button mat-raised-button color="primary">Sign In</button>
+    </form>
+    <div class="separator">ou</div>
+    <button mat-button color="primary">Connect with Google</button>
+    <button mat-button (click)="closeDialog()" color="warn">Cancel</button>
+  </div>
+  
