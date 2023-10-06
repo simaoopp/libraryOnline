@@ -1,26 +1,36 @@
 <mat-toolbar class="mat-elevation-z8">
-    <button (click)="drawer.toggle()" mat-icon-button>
-        <mat-icon>menu</mat-icon>
-    </button>
-    <span><img src="../assets/Design sem nome.png" style="height: 200px;"></span>
+  <button (click)="drawer.toggle()" mat-icon-button>
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <span><img src="../assets/Design sem nome.png" style="height: 200px" /></span>
 </mat-toolbar>
+
 <mat-drawer-container autosize>
-    <mat-drawer #drawer opened="true" mode="side" position="start">
+  <mat-drawer #drawer opened="true" mode="side" position="start">
     <mat-nav-list>
-        <mat-list-item>
-            <button routerLink="" mat-button><mat-icon>home</mat-icon> Home</button>
-        </mat-list-item>
-        <mat-list-item>
-            <button routerLink="" mat-button><mat-icon>book</mat-icon>Books</button>
-        </mat-list-item>
-        <mat-list-item>
-            <button mat-button (click)="openLoginDialog()"><mat-icon>login</mat-icon> Login</button>
-          </mat-list-item>          
+      <mat-list-item>
+        <button routerLink="" mat-button><mat-icon>home</mat-icon> Home</button>
+      </mat-list-item>
+      <mat-list-item>
+        <button routerLink="" mat-button><mat-icon>book</mat-icon>Books</button>
+      </mat-list-item>
+      <mat-list-item *ngIf="userLoggedIn">
+        <button routerLink="" mat-button>
+          <mat-icon>person</mat-icon>Perfil
+        </button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-button (click)="userLoggedIn ? logout() : openLoginDialog()">
+          <mat-icon>{{ userLoggedIn ? 'logout' : 'login' }}</mat-icon>
+          {{ userLoggedIn ? 'Logout' : 'Login' }}
+        </button>
+      </mat-list-item>
     </mat-nav-list>
-    </mat-drawer>
-    <mat-drawer-content>
-        <div style="text-align: center;min-height: 600px;">
-            <router-outlet></router-outlet>
-            </div>
-    </mat-drawer-content>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div style="text-align: center; min-height: 600px">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-content>
 </mat-drawer-container>

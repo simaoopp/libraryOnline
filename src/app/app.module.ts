@@ -26,6 +26,7 @@ import { RegisterComponent } from './register/register.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import firebase from 'firebase/compat/app';
+import { BooksComponent } from './books/books.component';
 
 export const firebaseConfig = environment.firebase;
 firebase.initializeApp(firebaseConfig);
@@ -34,7 +35,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent }
 ];
 @NgModule({
-  declarations: [AppComponent, HomeComponent, LoginComponent, RegisterComponent],
+  declarations: [AppComponent, HomeComponent, LoginComponent, RegisterComponent, BooksComponent],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),

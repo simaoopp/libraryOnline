@@ -1,8 +1,14 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
-import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
+import {
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  getAuth,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+} from 'firebase/auth';
 import { from } from 'rxjs';
 import { user } from './user';
 
@@ -10,6 +16,8 @@ import { user } from './user';
   providedIn: 'root',
 })
 export class AuthService {
+  isLoggedIn: boolean = false;
+
   constructor(
     public afAuth: AngularFireAuth,
     private auth: Auth,
@@ -20,7 +28,7 @@ export class AuthService {
     return from(
       signInWithEmailAndPassword(this.auth, username, password).then(
         (value) => {
-          console.log('sucess')
+          this.isLoggedIn = true;
         }
       )
     );
@@ -43,7 +51,7 @@ export class AuthService {
   signInWithGoogle() {
     const auth = getAuth(); // Get the Auth instance
     const provider = new GoogleAuthProvider(); // Create a Google Auth Provider instance
-  
+
     // Sign in with Google using a popup
     signInWithPopup(auth, provider)
       .then((userCredential) => {
@@ -52,11 +60,12 @@ export class AuthService {
           id: user.uid,
           name: user.displayName,
           email: user.email,
-          img: user.photoURL
+          img: user.photoURL,
         };
         this.db
-            .object('/users/' + user.uid)
-            .set(Object.assign(utilizador, { id: user.uid }));
+          .object('/users/' + user.uid)
+          .set(Object.assign(utilizador, { id: user.uid }));
+          this.isLoggedIn = true;
       })
       .catch((error) => {
         console.error('Google sign-in error:', error);
@@ -65,9 +74,14 @@ export class AuthService {
 
   async logout() {
     await this.auth.signOut();
+    this.isLoggedIn = false;
   }
 
-  getDefaultPhoto(){
+  getDefaultPhoto() {
     return this.db.object(`/defaultPhoto/img`).valueChanges();
+  }
+
+  getLoggedIn() {
+    return this.isLoggedIn;
   }
 }
