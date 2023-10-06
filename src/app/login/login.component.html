@@ -1,16 +1,17 @@
 <div class="login-container">
     <h2>Login</h2>
-    <form>
+    <form  [formGroup]="loginForm" (ngSubmit)="submit()">
       <mat-form-field class="full-width">
-        <input matInput placeholder="Email" type="email">
+        <input matInput placeholder="Email" type="email" formControlName="email">
       </mat-form-field>
       <mat-form-field class="full-width">
-        <input matInput placeholder="Password" type="password">
+        <input matInput placeholder="Password" type="password" formControlName="password">
       </mat-form-field>
       <button mat-raised-button color="primary">Sign In</button>
     </form>
-    <div class="separator">ou</div>
-    <button mat-button color="primary">Connect with Google</button>
+    <div class="separator">or</div>
+    <button mat-button color="primary" (click)="connectWithGoogle()">Connect with Google</button>
+    <button mat-button (click)="openRegisterDialog()" color="primary">Register</button>
     <button mat-button (click)="closeDialog()" color="warn">Cancel</button>
   </div>
   

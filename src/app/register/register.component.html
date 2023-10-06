@@ -1,0 +1,39 @@
+<div class="login-container">
+    <h2>Sign Up</h2>
+    <form [formGroup]="singUpForm" (ngSubmit)="submit()">
+
+        <div class="imgPhoto">
+            <input
+              type="file"
+              accept="image/*"
+              (change)="onFileChange($event)"
+              hidden
+              id="imageInput"
+            />
+            <label for="imageInput">
+              <img
+                class="rounded-circle"
+                src="{{ defaultPhoto }}"
+                alt="Default Photo"
+                width="90"
+                role="button"
+              />
+            </label>
+          </div>
+          
+        <mat-form-field class="full-width">
+            <input matInput placeholder="Name" type="text" formControlName="name">
+          </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Email" type="email" formControlName="email">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Password" type="password" formControlName="password">
+      </mat-form-field>
+      <button mat-raised-button color="primary">Sign Up</button>
+    </form>
+    <div class="separator">or</div>
+    <button mat-button color="primary" (click)="connectWithGoogle()">Connect with Google</button>
+    <button mat-button (click)="closeDialog()" color="warn">Cancel</button>
+  </div>
+  
