@@ -1,1 +1,10 @@
-<p>books works!</p>
+<div class="background-image"></div>
+<div class="search-container">
+    <h1 class="slogan">Unlock the World of Knowledge</h1>
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" [(ngModel)]="searchQuery" placeholder="Enter your search query" aria-describedby="basic-addon2">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" (click)="performBeautySearch()"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </div>
+    </div>
+</div>

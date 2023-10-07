@@ -27,12 +27,15 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import firebase from 'firebase/compat/app';
 import { BooksComponent } from './books/books.component';
+import { HttpClientModule } from '@angular/common/http';
 
 export const firebaseConfig = environment.firebase;
 firebase.initializeApp(firebaseConfig);
 
 const routes: Routes = [
-  { path: '', component: HomeComponent }
+  { path: '', component: HomeComponent },
+  { path: 'Books', component: BooksComponent }
+
 ];
 @NgModule({
   declarations: [AppComponent, HomeComponent, LoginComponent, RegisterComponent, BooksComponent],
@@ -53,6 +56,7 @@ const routes: Routes = [
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(firebaseConfig),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
