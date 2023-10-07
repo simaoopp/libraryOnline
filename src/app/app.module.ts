@@ -28,17 +28,19 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import firebase from 'firebase/compat/app';
 import { BooksComponent } from './books/books.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PerfilComponent } from './perfil/perfil.component';
 
 export const firebaseConfig = environment.firebase;
 firebase.initializeApp(firebaseConfig);
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'Books', component: BooksComponent }
+  { path: 'Books', component: BooksComponent },
+  { path: 'Perfil', component: PerfilComponent },
 
 ];
 @NgModule({
-  declarations: [AppComponent, HomeComponent, LoginComponent, RegisterComponent, BooksComponent],
+  declarations: [AppComponent, HomeComponent, LoginComponent, RegisterComponent, BooksComponent, PerfilComponent],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),

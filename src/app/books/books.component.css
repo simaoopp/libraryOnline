@@ -7,31 +7,56 @@
   filter: brightness(0.5);
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh; /* Ensure the container takes up at least the full viewport height */
+  padding-top: 20px; /* Adjust the top padding as needed */
+}
+
 .search-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   text-align: center;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 5px;
 }
 
-input {
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px; /* Adjust the margin as needed to separate it from the search container */
+  z-index: 1;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.card {
+  flex: 0 0 calc(25% - 20px);
+  margin: 10px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 5px;
   padding: 10px;
-  font-size: 18px;
+  transition: transform 0.2s;
 }
 
-button {
-  padding: 10px 20px;
-  font-size: 18px;
-  color: #ffffff;
+.card:hover {
+  transform: scale(1.05);
 }
 
-button:hover {
-  background-color: #c4c4c4;
+.card img {
+  max-width: 100%;
 }
 
-.slogan {
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #c4c4c4;
+.card-title {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.card-text {
+  font-size: 14px;
 }

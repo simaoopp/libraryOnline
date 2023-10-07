@@ -1,10 +1,28 @@
 <div class="background-image"></div>
-<div class="search-container">
-    <h1 class="slogan">Unlock the World of Knowledge</h1>
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" [(ngModel)]="searchQuery" placeholder="Enter your search query" aria-describedby="basic-addon2">
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button" (click)="performBeautySearch()"><i class="fa-solid fa-magnifying-glass"></i></button>
-      </div>
+<div class="container">
+    <div class="search-container">
+        <h1 class="slogan">Unlock the World of Knowledge</h1>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" [(ngModel)]="searchQuery" (input)="search()" placeholder="Enter your search query" aria-describedby="basic-addon2">
+        </div>
+    </div>
+
+    <div class="card-container">
+        <div class="card" *ngFor="let result of searchResults">
+        <div class="card-header">
+            <img
+                class="card-img-top"
+                src="{{ result.imageLink }}"
+                alt="Card image cap"
+            />
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <h5 class="card-title">{{ result.imageLink }}</h5>
+            </li>
+            <li class="list-group-item">
+                <p class="card-text">{{ result.year }}</p>
+            </li>
+        </ul>
     </div>
 </div>

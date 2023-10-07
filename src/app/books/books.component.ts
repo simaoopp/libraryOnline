@@ -11,6 +11,7 @@ import { BooksService } from '../books.service';
 export class BooksComponent {
 
   searchQuery: string = '';
+  searchResults: any[] = [];
 
   performBeautySearch() {
       // Implement your search logic here
@@ -24,6 +25,15 @@ export class BooksComponent {
   ngOnInit() {
     this.bookService.getBooks().subscribe((data) => {
       this.books = data;
+    });
+  }
+
+  search(): void {
+    this.bookService.getBooks().subscribe((items) => {
+      this.searchResults = items.filter((item) =>
+        item.title.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+      console.log(this.searchResults);
     });
   }
 }

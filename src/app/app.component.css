@@ -1,32 +1,42 @@
 .example-spacer {
-    flex: 1 1 auto;
-  }
+  flex: 1 1 auto;
+}
 
-  .mat-toolbar {
-    background-color: rgba(105, 84, 37, 0.521);
-  }
+.mat-toolbar {
+  background-color: rgba(105, 84, 37, 0.521);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
 
+.mat-drawer {
+  position: fixed;
+  top: 64px;
+  bottom: 0;
+  z-index: 999;
+}
+
+.mat-drawer-content {
+  padding-top: 64px;
+  overflow-y: auto;
+}
 .login-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  }
-  
-  .full-width {
-    width: 100%;
-    margin-bottom: 16px;
-  }
-  
+.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+}
 
-  
-  .separator {
-    margin: 16px 0;
-    font-weight: bold;
-  }
-  
-  button {
-    width: 100%;
-  }
+.separator {
+  margin: 16px 0;
+  font-weight: bold;
+}
 
-  
+button {
+  width: 100%;
+}
