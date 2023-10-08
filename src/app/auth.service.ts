@@ -49,10 +49,9 @@ export class AuthService {
   }
 
   signInWithGoogle() {
-    const auth = getAuth(); // Get the Auth instance
-    const provider = new GoogleAuthProvider(); // Create a Google Auth Provider instance
-
-    // Sign in with Google using a popup
+    const auth = getAuth();
+    const provider = new GoogleAuthProvider();
+    
     signInWithPopup(auth, provider)
       .then((userCredential) => {
         const user = userCredential.user;
@@ -61,6 +60,8 @@ export class AuthService {
           name: user.displayName,
           email: user.email,
           img: user.photoURL,
+          phone: 'uknown',
+          job: 'uknown',
         };
         this.db
           .object('/users/' + user.uid)

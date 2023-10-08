@@ -18,10 +18,24 @@
         </div>
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
-                <h5 class="card-title">{{ result.imageLink }}</h5>
+                <h5 class="card-title">{{ result.title }}</h5>
+                <p class="card-text">{{ result.author }}</p>
             </li>
             <li class="list-group-item">
-                <p class="card-text">{{ result.year }}</p>
+                <div class="card-body">
+                    <a
+                      class="btn btn-outline-secondary"
+                      data-bs-toggle="modal"
+                      data-bs-target="#myModal"
+                      ><i class="fa-solid fa-eye"></i
+                    ></a>
+                    <a
+                    class="btn btn-outline-secondary m-3"
+                    data-bs-toggle="modal"
+                    data-bs-target="#myModal"
+                    ><i class="fa-solid fa-star"></i
+                  ></a>
+                  </div>
             </li>
         </ul>
     </div>

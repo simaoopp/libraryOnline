@@ -85,7 +85,10 @@ export class RegisterComponent {
       name: this.name.value,
       email: this.email.value,
       password: this.password.value,
-      img: img
+      img: img,
+      phone: 'uknown',
+      job: 'uknown'
+
     };
     if (!this.singUpForm.valid) return;
     this.auth.signUp(utilizador).subscribe(() => {
