@@ -1,42 +1,47 @@
 <div class="background-image"></div>
 <div class="container">
-    <div class="search-container">
-        <h1 class="slogan">Unlock the World of Knowledge</h1>
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" [(ngModel)]="searchQuery" (input)="search()" placeholder="Enter your search query" aria-describedby="basic-addon2">
-        </div>
+  <div class="search-container">
+    <h1 class="slogan">Unlock the World of Knowledge</h1>
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="searchQuery"
+        (input)="search()"
+        placeholder="Enter your search query"
+        aria-describedby="basic-addon2"
+      />
     </div>
+  </div>
 
-    <div class="card-container">
-        <div class="card" *ngFor="let result of searchResults">
-        <div class="card-header">
-            <img
-                class="card-img-top"
-                src="{{ result.imageLink }}"
-                alt="Card image cap"
-            />
-        </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-                <h5 class="card-title">{{ result.title }}</h5>
-                <p class="card-text">{{ result.author }}</p>
-            </li>
-            <li class="list-group-item">
-                <div class="card-body">
-                    <a
-                      class="btn btn-outline-secondary"
-                      data-bs-toggle="modal"
-                      data-bs-target="#myModal"
-                      ><i class="fa-solid fa-eye"></i
-                    ></a>
-                    <a
-                    class="btn btn-outline-secondary m-3"
-                    data-bs-toggle="modal"
-                    data-bs-target="#myModal"
-                    ><i class="fa-solid fa-star"></i
-                  ></a>
-                  </div>
-            </li>
-        </ul>
+  <div class="card-container">
+    <div class="card" *ngFor="let result of searchResults">
+      <div class="card-header">
+        <img
+          class="card-img-top"
+          src="{{ result.imageLink }}"
+          alt="Card image cap"
+        />
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <h5 class="card-title">{{ result.title }}</h5>
+          <p class="card-text">{{ result.author }}</p>
+        </li>
+        <li class="list-group-item">
+          <div class="card-body">
+            <a
+              class="btn btn-outline-secondary"
+              (click)="openBookDetailsModal(result)"
+              ><i class="fa-solid fa-eye"></i
+            ></a>
+            <a
+              class="btn btn-outline-secondary m-3"
+              ><i class="fa-solid fa-star"></i
+            ></a>
+          </div>
+        </li>
+      </ul>
     </div>
+  </div>
 </div>

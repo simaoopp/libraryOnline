@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BooksService } from '../books.service';
+import { MatDialog } from '@angular/material/dialog';
+import { BookDetailsModalComponent } from '../book-details-modal/book-details-modal.component';
 
 @Component({
   selector: 'app-books',
@@ -12,6 +14,7 @@ export class BooksComponent {
 
   searchQuery: string = '';
   searchResults: any[] = [];
+  selectedBookId: number | null = null;
 
   performBeautySearch() {
       // Implement your search logic here
@@ -20,7 +23,7 @@ export class BooksComponent {
   
   books: any[] = [];
 
-  constructor(private bookService: BooksService) {}
+  constructor(private bookService: BooksService, private dialog: MatDialog) {}
 
   ngOnInit() {
     this.bookService.getBooks().subscribe((data) => {
@@ -34,6 +37,16 @@ export class BooksComponent {
         item.title.toLowerCase().includes(this.searchQuery.toLowerCase())
       );
       console.log(this.searchResults);
+    });
+  }
+
+  openBookDetailsModal(book): void {
+    const dialogRef = this.dialog.open(BookDetailsModalComponent, {
+      data: book
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('Book details modal closed:', result);
     });
   }
 }

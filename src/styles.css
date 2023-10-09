@@ -1,3 +1,18 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+:root {
+    --custom-theme-primary: #3f51b5; 
+    --custom-theme-accent: #ff9800; 
+  }
+
+  .mat-primary {
+    background-color: var(--custom-theme-primary);
+  }
+  
+  .mat-accent {
+    background-color: var(--custom-theme-accent);
+  }
+  

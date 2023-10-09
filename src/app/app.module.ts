@@ -29,6 +29,7 @@ import firebase from 'firebase/compat/app';
 import { BooksComponent } from './books/books.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PerfilComponent } from './perfil/perfil.component';
+import { BookDetailsModalComponent } from './book-details-modal/book-details-modal.component';
 
 export const firebaseConfig = environment.firebase;
 firebase.initializeApp(firebaseConfig);
@@ -40,7 +41,7 @@ const routes: Routes = [
 
 ];
 @NgModule({
-  declarations: [AppComponent, HomeComponent, LoginComponent, RegisterComponent, BooksComponent, PerfilComponent],
+  declarations: [AppComponent, HomeComponent, LoginComponent, RegisterComponent, BooksComponent, PerfilComponent, BookDetailsModalComponent],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),

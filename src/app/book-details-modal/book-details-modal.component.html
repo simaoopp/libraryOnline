@@ -1,0 +1,18 @@
+<div class="custom-modal">
+    <h1 class="modal-title">{{ data.title }}</h1>
+    <hr>
+    <div class="modal-content">
+      <img class="modal-image" [src]="data.imageLink" alt="Book Cover" />
+      <hr>
+      <p><strong>Author:</strong> {{ data.author }}</p>
+      <p><strong>Country:</strong> {{ data.country }}</p>
+      <p><strong>Language:</strong> {{ data.language }}</p>
+      <p><strong>Pages:</strong> {{ data.pages }}</p>
+      <p><strong>Year:</strong> {{ data.year }}</p>
+    </div>
+    <hr>
+    <div mat-dialog-actions>
+      <button mat-button [mat-dialog-close]="'close'">Close</button>
+    </div>
+  </div>
+  
